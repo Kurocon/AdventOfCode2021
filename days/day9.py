@@ -29,10 +29,7 @@ class Day9(AOCDay):
 
     def part2(self, input_data):
         np_arr = np.array(self.groups)
-        structure = np.array([[0, 1, 0],
-                              [1, 1, 1],
-                              [0, 1, 0]])
-        labeled, ncomponents = label(np_arr, structure)
+        labeled, ncomponents = label(np_arr)
         counts = Counter([x for row in labeled for x in row if x != 0])
         top_3 = [x[1] for x in counts.most_common(3)]
         yield reduce(lambda x, y: x * y, top_3)
